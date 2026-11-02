@@ -18,12 +18,11 @@ import { CabinetMember } from '../../types';
 export const OrganizationPreview: React.FC = () => {
   const members: CabinetMember[] = getCarouselMembers();
 
-  // State for interactive manual inspection & pause controls
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  // State for spotlight modal inspection
   const [selectedMemberIndex, setSelectedMemberIndex] = useState<number | null>(null);
 
-  // Marquee is paused if hovered or spotlight modal is active
-  const isMarqueePaused = isHovered || selectedMemberIndex !== null;
+  // Marquee is paused strictly when spotlight modal is active
+  const isModalOpen = selectedMemberIndex !== null;
 
   // Selected member for detail inspection
   const selectedMember = selectedMemberIndex !== null ? members[selectedMemberIndex] : null;
@@ -86,26 +85,22 @@ export const OrganizationPreview: React.FC = () => {
       {/* 2. CONTINUOUS HORIZONTAL MARQUEE TRACK (FULL-WIDTH SEAMLESS LOOP)   */}
       {/* Moves continuously from right to left across all screens (Desktop & Mobile) */}
       {/* =================================================================== */}
-      <div
-        className="relative w-full py-6 select-none overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className="relative w-full py-6 select-none overflow-hidden">
         {/* Ambient Gradient Fade Masks on Left & Right Edges */}
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-brand-navy to-transparent z-20 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-brand-navy to-transparent z-20 pointer-events-none" />
 
         {/* The Continuous Infinite Marquee Container */}
         <div
-          className={`flex gap-4 sm:gap-6 w-max animate-marquee-continuous ${
-            isMarqueePaused ? 'marquee-paused' : ''
+          className={`flex w-max animate-marquee-continuous ${
+            isModalOpen ? 'marquee-paused' : ''
           }`}
           style={{
-            animationPlayState: isMarqueePaused ? 'paused' : 'running',
+            animationPlayState: isModalOpen ? 'paused' : 'running',
           }}
         >
           {/* Group 1: 29 Official Cabinet Members */}
-          <div className="flex gap-4 sm:gap-6 shrink-0">
+          <div className="flex gap-4 sm:gap-6 pr-4 sm:pr-6 shrink-0">
             {members.map((member, idx) => (
               <div
                 key={`set1-${member.id}`}
@@ -121,7 +116,7 @@ export const OrganizationPreview: React.FC = () => {
           </div>
 
           {/* Group 2: Exact Duplicate for Mathematically Seamless Infinite Looping */}
-          <div className="flex gap-4 sm:gap-6 shrink-0" aria-hidden="true">
+          <div className="flex gap-4 sm:gap-6 pr-4 sm:pr-6 shrink-0" aria-hidden="true">
             {members.map((member, idx) => (
               <div
                 key={`set2-${member.id}`}

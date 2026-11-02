@@ -134,23 +134,37 @@ export const OrganizationPage: React.FC = () => {
         {/* 3. SEKRETARIS KABINET (SEKAB)                                     */}
         {/* ================================================================= */}
         <div className="flex flex-col items-center">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2 font-heading">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-yellow mb-4 font-heading">
             <span className="w-4 h-[2px] bg-brand-yellow rounded-full" />
             <span>Sekretaris Kabinet (Sekab)</span>
           </div>
-          <p className="text-xs text-slate-500 font-normal mb-5 text-center max-w-md">
-            Mendampingi kepemimpinan eksekutif dalam tata kelola administrasi, pengarsipan, dan koordinasi internal kabinet.
-          </p>
 
-          <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center">
-            {sekabMembers.map((sekab) => (
-              <OrganizationProfileCard
-                key={sekab.id}
-                member={sekab}
-                variant="hierarchy"
-                className="border-2 border-brand-yellow/50 ring-2 ring-brand-yellow/10 shadow-glow-yellow"
-              />
-            ))}
+          <div className="w-full">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border shadow-sm hover:border-brand-blue/30 transition-all duration-300">
+              {/* Sekab Header */}
+              <div className="pb-6 mb-6 border-b border-brand-border">
+                <span className="px-2.5 py-0.5 rounded-md bg-brand-blue/10 text-brand-blue font-mono font-bold text-[11px] uppercase inline-block mb-2">
+                  SEKAB
+                </span>
+                <h3 className="font-heading font-extrabold text-2xl text-brand-navy">
+                  Sekretariat Kabinet
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed">
+                  Mendampingi kepemimpinan eksekutif dalam tata kelola administrasi, pengarsipan, dan koordinasi internal kabinet.
+                </p>
+              </div>
+
+              {/* Sekab Members Responsive Grid - Sized and spaced identically to 2-member ministry cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                {sekabMembers.map((member: CabinetMember) => (
+                  <OrganizationProfileCard
+                    key={member.id}
+                    member={member}
+                    variant="hierarchy"
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Connecting Line (Sekab to Ministries) */}

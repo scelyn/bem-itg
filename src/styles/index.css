@@ -91,26 +91,32 @@
   }
 }
 
+@-webkit-keyframes marquee-continuous {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+  }
+}
+
 .animate-marquee-continuous {
   display: flex;
   width: max-content;
-  animation: marquee-continuous 190s linear infinite;
+  animation: marquee-continuous 70s linear infinite;
+  -webkit-animation: marquee-continuous 70s linear infinite;
   will-change: transform;
+}
+
+/* Pause on hover strictly on desktop with fine mouse pointer; never on touchscreens */
+@media (hover: hover) and (pointer: fine) {
+  .animate-marquee-continuous:hover {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+  }
 }
 
 .marquee-paused {
   animation-play-state: paused !important;
-}
-
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee-continuous {
-    animation: none !important;
-  }
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  -webkit-animation-play-state: paused !important;
 }

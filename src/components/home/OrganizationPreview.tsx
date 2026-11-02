@@ -84,33 +84,32 @@ export const OrganizationPreview: React.FC = () => {
 
       {/* =================================================================== */}
       {/* 2. CONTINUOUS HORIZONTAL MARQUEE TRACK (FULL-WIDTH SEAMLESS LOOP)   */}
-      {/* Moves continuously from right to left at ~46 px/s with hardware GPU */}
+      {/* Moves continuously from right to left across all screens (Desktop & Mobile) */}
       {/* =================================================================== */}
       <div
         className="relative w-full py-6 select-none overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onTouchStart={() => setIsHovered(true)}
-        onTouchEnd={() => setTimeout(() => setIsHovered(false), 2500)}
       >
         {/* Ambient Gradient Fade Masks on Left & Right Edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-brand-navy to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-brand-navy to-transparent z-20 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-brand-navy to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-brand-navy to-transparent z-20 pointer-events-none" />
 
         {/* The Continuous Infinite Marquee Container */}
         <div
-          className={`flex gap-6 w-max animate-marquee-continuous ${isMarqueePaused ? 'marquee-paused' : ''
-            }`}
+          className={`flex gap-4 sm:gap-6 w-max animate-marquee-continuous ${
+            isMarqueePaused ? 'marquee-paused' : ''
+          }`}
           style={{
             animationPlayState: isMarqueePaused ? 'paused' : 'running',
           }}
         >
           {/* Group 1: 29 Official Cabinet Members */}
-          <div className="flex gap-6 shrink-0">
+          <div className="flex gap-4 sm:gap-6 shrink-0">
             {members.map((member, idx) => (
               <div
                 key={`set1-${member.id}`}
-                className="w-[270px] sm:w-[290px] shrink-0 cursor-pointer transition-transform hover:-translate-y-1.5"
+                className="w-[260px] sm:w-[290px] shrink-0 cursor-pointer transition-transform hover:-translate-y-1.5"
                 onClick={() => handleOpenSpotlight(idx)}
               >
                 <OrganizationProfileCard
@@ -122,11 +121,11 @@ export const OrganizationPreview: React.FC = () => {
           </div>
 
           {/* Group 2: Exact Duplicate for Mathematically Seamless Infinite Looping */}
-          <div className="flex gap-6 shrink-0" aria-hidden="true">
+          <div className="flex gap-4 sm:gap-6 shrink-0" aria-hidden="true">
             {members.map((member, idx) => (
               <div
                 key={`set2-${member.id}`}
-                className="w-[270px] sm:w-[290px] shrink-0 cursor-pointer transition-transform hover:-translate-y-1.5"
+                className="w-[260px] sm:w-[290px] shrink-0 cursor-pointer transition-transform hover:-translate-y-1.5"
                 onClick={() => handleOpenSpotlight(idx)}
               >
                 <OrganizationProfileCard
@@ -334,9 +333,10 @@ export const OrganizationPreview: React.FC = () => {
 
               <button
                 onClick={handleCloseSpotlight}
-                className="px-4 py-1.5 rounded-xl bg-brand-yellow text-brand-navy font-heading font-bold text-xs shadow-clay-yellow hover:scale-105 active:scale-95 transition-all"
+                className="px-4 py-1.5 rounded-xl bg-brand-yellow text-brand-navy font-heading font-bold text-xs shadow-clay-yellow hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
               >
-                Tutup & Lanjutkan Marquee
+                <X className="w-3.5 h-3.5" />
+                <span>Tutup Detail</span>
               </button>
             </div>
 

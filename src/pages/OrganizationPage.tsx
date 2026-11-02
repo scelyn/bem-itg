@@ -9,6 +9,7 @@ export const OrganizationPage: React.FC = () => {
 
   const presiden = cabinetMembers.find((m) => m.level === 'presiden')!;
   const wapres = cabinetMembers.find((m) => m.level === 'wapres')!;
+  const sekabMembers = cabinetMembers.filter((m) => m.level === 'sekab');
 
   const filteredMinistries = selectedMinistryFilter === 'all'
     ? ministriesData
@@ -120,9 +121,41 @@ export const OrganizationPage: React.FC = () => {
             />
           </div>
 
-          {/* Connecting Line (Wapres directly to Ministries) */}
+          {/* Connecting Line (Wapres to Sekab) */}
+          <div className="flex flex-col items-center my-6">
+            <div className="w-1 h-12 bg-gradient-to-b from-brand-blue via-brand-navy to-brand-yellow rounded-full" />
+            <div className="w-6 h-6 rounded-full bg-brand-navy border-2 border-brand-yellow flex items-center justify-center -mt-1 shadow-sm">
+              <ArrowDown className="w-3 h-3 text-brand-yellow" />
+            </div>
+          </div>
+        </div>
+
+        {/* ================================================================= */}
+        {/* 3. SEKRETARIS KABINET (SEKAB)                                     */}
+        {/* ================================================================= */}
+        <div className="flex flex-col items-center">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-yellow mb-2 font-heading">
+            <span className="w-4 h-[2px] bg-brand-yellow rounded-full" />
+            <span>Sekretaris Kabinet (Sekab)</span>
+          </div>
+          <p className="text-xs text-slate-500 font-normal mb-5 text-center max-w-md">
+            Mendampingi kepemimpinan eksekutif dalam tata kelola administrasi, pengarsipan, dan koordinasi internal kabinet.
+          </p>
+
+          <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center">
+            {sekabMembers.map((sekab) => (
+              <OrganizationProfileCard
+                key={sekab.id}
+                member={sekab}
+                variant="hierarchy"
+                className="border-2 border-brand-yellow/50 ring-2 ring-brand-yellow/10 shadow-glow-yellow"
+              />
+            ))}
+          </div>
+
+          {/* Connecting Line (Sekab to Ministries) */}
           <div className="flex flex-col items-center my-8">
-            <div className="w-1 h-12 bg-gradient-to-b from-brand-blue via-brand-navy to-brand-red rounded-full" />
+            <div className="w-1 h-12 bg-gradient-to-b from-brand-yellow via-brand-navy to-brand-red rounded-full" />
             <div className="w-6 h-6 rounded-full bg-brand-navy border-2 border-brand-red flex items-center justify-center -mt-1 shadow-sm">
               <ArrowDown className="w-3 h-3 text-brand-red" />
             </div>
@@ -130,9 +163,18 @@ export const OrganizationPage: React.FC = () => {
         </div>
 
         {/* ================================================================= */}
-        {/* 3. DAFTAR KEMENTERIAN                                             */}
+        {/* 4. DAFTAR KEMENTERIAN                                             */}
         {/* ================================================================= */}
         <div className="pt-2 space-y-10">
+          <div className="text-center max-w-2xl mx-auto mb-6">
+            <div className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red mb-2 font-heading">
+              <span className="w-4 h-[2px] bg-brand-red rounded-full" />
+              <span>Kementerian Kabinet</span>
+            </div>
+            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-navy">
+              Pelaksana Program & Penggerak Aspirasi
+            </h2>
+          </div>
 
           {/* Ministry Filter Controls */}
           <div className="flex flex-wrap items-center justify-center gap-2">

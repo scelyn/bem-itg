@@ -106,7 +106,7 @@ export const KolektivaCardStack: React.FC = () => {
             return (
               <motion.div
                 key={card.id}
-                className={`absolute inset-x-2 sm:inset-x-4 top-0 rounded-3xl p-6 sm:p-8 flex flex-col justify-between border cursor-grab active:cursor-grabbing overflow-hidden ${themeClasses[card.theme]}`}
+                className={`absolute inset-x-2 sm:inset-x-4 top-0 rounded-3xl p-5 sm:p-8 flex flex-col justify-between border cursor-grab active:cursor-grabbing overflow-hidden ${themeClasses[card.theme]}`}
                 style={{
                   height: '340px',
                   zIndex,
@@ -143,30 +143,30 @@ export const KolektivaCardStack: React.FC = () => {
                 </div>
 
                 {/* Top Card Row: Badge & Number Tag */}
-                <div className="relative z-10 flex items-center justify-between">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-bold font-mono">
+                <div className="relative z-10 flex items-center justify-between gap-2">
+                  <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-bold font-mono">
                     <span className="text-brand-yellow">{card.number}</span>
                     <span className="text-white/40">|</span>
-                    <span className="text-white uppercase tracking-wider">{card.tagline}</span>
+                    <span className="text-white uppercase tracking-wider line-clamp-1">{card.tagline}</span>
                   </div>
 
-                  <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center shadow-inner">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center shadow-inner shrink-0">
                     {card.icon}
                   </div>
                 </div>
 
                 {/* Middle Content */}
-                <div className="relative z-10 space-y-3 my-auto">
+                <div className="relative z-10 space-y-2 sm:space-y-3 my-auto">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-brand-yellow" />
-                    <span className="text-xs font-bold text-brand-yellow uppercase tracking-widest font-heading">
+                    <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-yellow" />
+                    <span className="text-[10px] sm:text-xs font-bold text-brand-yellow uppercase tracking-widest font-heading">
                       Pilar Nilai Kolektiva
                     </span>
                   </div>
-                  <h3 className="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                  <h3 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
                     {card.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-200/95 leading-relaxed max-w-md">
+                  <p className="text-xs sm:text-sm text-slate-200/95 leading-relaxed max-w-md line-clamp-3 sm:line-clamp-none">
                     {card.description}
                   </p>
                 </div>

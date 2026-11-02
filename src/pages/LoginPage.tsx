@@ -94,8 +94,8 @@ export const LoginPage: React.FC = () => {
       </header>
 
       {/* 3. Main Content: Single Centered Card Layout */}
-      <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-8 sm:py-12 my-auto">
-        <div className="w-full max-w-[420px] sm:max-w-[440px] bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 p-6 sm:p-8 shadow-[0_4px_24px_-4px_rgba(0,42,98,0.06)] transition-all">
+      <main className="relative z-10 flex-1 flex items-center justify-center px-3 sm:px-4 py-8 sm:py-12 my-auto">
+        <div className="w-full max-w-[420px] sm:max-w-[440px] bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 p-5 sm:p-8 shadow-[0_4px_24px_-4px_rgba(0,42,98,0.06)] transition-all">
 
           {/* Item 1: Tiga logo kecil sejajar secara horizontal (32-44px, object-contain, no boxes) */}
           <div className="flex items-center justify-center gap-5 sm:gap-6 mb-5">

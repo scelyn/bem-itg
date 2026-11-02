@@ -22,6 +22,7 @@ export const OrganizationProfileCard: React.FC<OrganizationProfileCardProps> = (
   // Aspect ratio is 3:4 (standard editorial portrait)
   const isPresident = member.level === 'presiden';
   const isWapres = member.level === 'wapres';
+  const isSekab = member.level === 'sekab';
 
   return (
     <div
@@ -106,10 +107,12 @@ export const OrganizationProfileCard: React.FC<OrganizationProfileCardProps> = (
                 ? 'bg-brand-red text-white border-brand-red/80 shadow-clay-red'
                 : isWapres
                 ? 'bg-brand-yellow text-brand-navy border-brand-yellow/80 shadow-clay-yellow'
+                : isSekab
+                ? 'bg-brand-blue text-white border-brand-blue/80 shadow-clay-blue'
                 : 'bg-brand-navy/90 text-brand-yellow border-white/20'
             }`}
           >
-            {member.ministryName || (isPresident ? 'Presiden' : isWapres ? 'Wapres' : 'Kabinet')}
+            {member.ministryName || (isPresident ? 'Presiden' : isWapres ? 'Wapres' : isSekab ? 'Sekretariat Kabinet' : 'Kabinet')}
           </span>
 
           {member.order && (
@@ -151,7 +154,7 @@ export const OrganizationProfileCard: React.FC<OrganizationProfileCardProps> = (
           </p>
 
           {/* Short Bio (shown in hierarchy or leadership cards) */}
-          {(variant === 'hierarchy' || isPresident || isWapres) && member.bio && (
+          {(variant === 'hierarchy' || isPresident || isWapres || isSekab) && member.bio && (
             <p className="text-xs text-slate-300/70 pt-2 line-clamp-2 leading-relaxed border-t border-white/5">
               {member.bio}
             </p>

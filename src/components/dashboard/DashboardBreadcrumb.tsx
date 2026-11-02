@@ -52,3 +52,4 @@ export const DashboardBreadcrumb: React.FC = () => {
     </nav>
   );
 };
+

@@ -1,0 +1,243 @@
+// Prisma Schema for BEM ITG KOLEKTIVA Portal
+// Production-Ready Relational Database Design
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// =============================================================================
+// 1. RBAC (USERS, ROLES, PERMISSIONS)
+// =============================================================================
+
+model Role {
+  id          String           @id // "super_admin" | "admin" | "editor"
+  name        String
+  description String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  users       User[]
+  permissions RolePermission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String           @id // e.g. "users:manage", "news:publish", "aspirations:review"
+  name        String
+  module      String // "users" | "aspirations" | "news" | "documents" | "organization" | "system"
+  action      String // "create" | "read" | "update" | "delete" | "publish" | "manage"
+  description String?
+  createdAt   DateTime         @default(now())
+  roles       RolePermission[]
+
+  @@map("permissions")
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model User {
+  id             String           @id @default(cuid())
+  fullName       String
+  username       String           @unique
+  email          String           @unique
+  passwordHash   String
+  roleId         String
+  role           Role             @relation(fields: [roleId], references: [id])
+  isActive       Boolean          @default(true)
+  avatarUrl      String?
+  lastLoginAt    DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  auditLogs      AuditLog[]
+  newsArticles   NewsArticle[]
+  legalDocuments LegalDocument[]
+  aspirationNotes AspirationNote[]
+
+  @@map("users")
+}
+
+// =============================================================================
+// 2. DATA ASPIRASI MAHASISWA & WORKFLOW PIPELINE
+// =============================================================================
+
+model Aspiration {
+  id            String                  @id @default(cuid())
+  ticketCode    String                  @unique // e.g. "ASP-2026-089"
+  title         String
+  body          String
+  category      String // "Fasilitas & Infrastruktur Kampus" | "Kebijakan UKT & Finansial" | etc.
+  urgency       String                  @default("Normal") // "Normal" | "Mendesak" | "Kritis"
+  isAnonymous   Boolean                 @default(true)
+  senderName    String?
+  senderNim     String?
+  senderEmail   String?
+  senderPhone   String?
+  status        String                  @default("Baru Diterima") // "Baru Diterima" | "Sedang Ditelaah Komisi" | "Audiensi Pimpinan" | "Selesai & Diterbitkan" | "Ditolak"
+  createdAt     DateTime                @default(now())
+  updatedAt     DateTime                @updatedAt
+  pipelineSteps AspirationPipelineStep[]
+  internalNotes AspirationNote[]
+
+  @@map("aspirations")
+}
+
+model AspirationPipelineStep {
+  id            String      @id @default(cuid())
+  aspirationId  String
+  aspiration    Aspiration  @relation(fields: [aspirationId], references: [id], onDelete: Cascade)
+  stepNumber    Int
+  title         String
+  description   String
+  status        String      @default("pending") // "completed" | "in-progress" | "pending"
+  completedAt   DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@map("aspiration_pipeline_steps")
+}
+
+model AspirationNote {
+  id           String     @id @default(cuid())
+  aspirationId String
+  aspiration   Aspiration @relation(fields: [aspirationId], references: [id], onDelete: Cascade)
+  authorId     String
+  author       User       @relation(fields: [authorId], references: [id])
+  note         String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@map("aspiration_notes")
+}
+
+// =============================================================================
+// 3. DATA BERITA & WARTA REDAKSI
+// =============================================================================
+
+model NewsArticle {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  title        String
+  excerpt      String
+  content      String
+  category     String // "Kajian Strategis" | "Advokasi" | "Event" | "Sosial Masyarakat" | etc.
+  coverImage   String?
+  tags         String? // Stored as comma-separated or JSON string
+  department   String?
+  archiveNumber String?
+  readTime     String?
+  isFeatured   Boolean   @default(false)
+  status       String    @default("draft") // "draft" | "published" | "archived"
+  publishedAt  DateTime?
+  authorId     String?
+  author       User?     @relation(fields: [authorId], references: [id])
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("news_articles")
+}
+
+// =============================================================================
+// 4. DATA DOKUMEN LEGAL & ARSIP RESMI
+// =============================================================================
+
+model LegalDocument {
+  id              String         @id @default(cuid())
+  documentNumber  String         @unique // e.g. "SK/012/BEM/XI/2026"
+  title           String
+  description     String?
+  category        String // "sk" | "po" | "lpj" | "sop"
+  categoryLabel   String
+  year            String
+  fileUrl         String
+  fileSize        String?
+  fileFormat      String         @default("PDF")
+  verifiedStatus  String
+  status          String         @default("published") // "draft" | "published" | "archived"
+  cabinetPeriodId String?
+  cabinetPeriod   CabinetPeriod? @relation(fields: [cabinetPeriodId], references: [id])
+  uploadedById    String?
+  uploadedBy      User?          @relation(fields: [uploadedById], references: [id])
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@map("legal_documents")
+}
+
+// =============================================================================
+// 5. PERIODE KABINET & STRUKTUR ORGANISASI
+// =============================================================================
+
+model CabinetPeriod {
+  id             String          @id // e.g. "2026-2027"
+  name           String // e.g. "Kabinet KOLEKTIVA"
+  startYear      Int
+  endYear        Int
+  isActive       Boolean         @default(true)
+  theme          String?
+  vision         String?
+  mission        String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  members        CabinetMember[]
+  legalDocuments LegalDocument[]
+
+  @@map("cabinet_periods")
+}
+
+model CabinetMember {
+  id              String        @id
+  name            String
+  position        String
+  hierarchyLevel  String // "presiden" | "wapres" | "sekab" | "kementerian"
+  ministryId      String? // "keuangan" | "dagri" | "lugri" | "hukum" | "menkraf" | "mendikristek" | "kominfo"
+  ministryName    String?
+  faculty         String
+  initial         String
+  image           String?
+  email           String?
+  instagram       String?
+  linkedin        String?
+  bio             String?
+  orderIndex      Int           @default(0)
+  isPlaceholder   Boolean       @default(false)
+  isActive        Boolean       @default(true)
+  cabinetPeriodId String
+  cabinetPeriod   CabinetPeriod @relation(fields: [cabinetPeriodId], references: [id])
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("cabinet_members")
+}
+
+// =============================================================================
+// 6. AUDIT LOG KEAMANAN & AKTIVITAS SISTEM
+// =============================================================================
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String // e.g. "AUTH_LOGIN", "UPDATE_ASPIRATION", "PUBLISH_NEWS"
+  module    String // "auth" | "users" | "aspirations" | "news" | "documents" | "organization" | "system"
+  targetId  String?
+  details   String? // JSON metadata
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@map("audit_logs")
+}

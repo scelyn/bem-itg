@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM ITG KOLEKTIVA 2026</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            charcoal: '#202020',
+                            graphite: '#333533',
+                            gray: '#D6D6D6',
+                            yellow: '#FFEE32',
+                            gold: '#FFD100',
+                            surface: '#F8F9FA',
+                            darkcard: '#292B29'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'clay': '0 8px 16px -2px rgba(0, 0, 0, 0.12), 0 4px 6px -1px rgba(0, 0, 0, 0.08), inset 0 -3px 4px rgba(0, 0, 0, 0.15), inset 0 3px 4px rgba(255, 255, 255, 0.4)',
+                        'clay-yellow': '0 10px 20px -3px rgba(255, 209, 0, 0.35), inset 0 -4px 6px rgba(180, 140, 0, 0.25), inset 0 3px 5px rgba(255, 255, 255, 0.7)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.18)',
+                        'glass-dark': '0 12px 40px 0 rgba(0, 0, 0, 0.37)',
+                        'glow-yellow': '0 0 35px -5px rgba(255, 238, 50, 0.35)'
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '2.5rem'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #202020;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333533;
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD100;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-nav {
+            background: rgba(32, 32, 32, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(214, 214, 214, 0.12);
+        }
+
+        .glass-card-dark {
+            background: rgba(51, 53, 51, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(214, 214, 214, 0.45);
+        }
+
+        /* Background Ambient Gradients */
+        .hero-mesh {
+            background-color: #202020;
+            background-image:
+                radial-gradient(at 15% 15%, rgba(255, 238, 50, 0.12) 0px, transparent 48%),
+                radial-gradient(at 85% 25%, rgba(255, 209, 0, 0.08) 0px, transparent 52%),
+                radial-gradient(at 50% 85%, rgba(51, 53, 51, 0.8) 0px, transparent 65%);
+        }
+
+        .clay-badge {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .clay-badge:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brand-charcoal text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-yellow selection:text-brand-charcoal">
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: FLOATING NAVIGATION BAR                                        -->
+    <!-- ========================================================================= -->
+    <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4 transition-all duration-300" id="mainNavbar">
+        <div
+            class="glass-nav rounded-full px-5 py-3 w-full max-w-6xl flex items-center justify-between shadow-glass border border-white/10 hover:border-brand-yellow/30 transition-all duration-300">
+
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-brand-yellow flex items-center justify-center text-brand-charcoal font-heading font-black text-lg shadow-clay-yellow group-hover:rotate-6 transition-transform">
+                    B
+                </div>
+                <div class="leading-none">
+                    <span class="font-heading font-bold text-base tracking-wide text-white flex items-center gap-1.5">
+                        BEM ITG KOLEKTIVA <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-ping"></span>
+                    </span>
+                    <span class="text-[10px] tracking-widest uppercase text-brand-gray/80 font-medium">Institut
+                        Teknologi Garut</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/5">
+                <a href="#hero"
+                    class="px-4 py-2 text-xs font-semibold rounded-full text-white hover:text-brand-yellow hover:bg-white/5 transition-all">Beranda</a>
+                <a href="#about"
+                    class="px-4 py-2 text-xs font-semibold rounded-full text-brand-gray hover:text-brand-yellow hover:bg-white/5 transition-all">Tentang</a>
+                <a href="#organization"
+                    class="px-4 py-2 text-xs font-semibold rounded-full text-brand-gray hover:text-brand-yellow hover:bg-white/5 transition-all">Kabinet</a>
+                <a href="#news"
+                    class="px-4 py-2 text-xs font-semibold rounded-full text-brand-gray hover:text-brand-yellow hover:bg-white/5 transition-all">Warta
+                    & Gerak</a>
+                <a href="#aspirations"
+                    class="px-4 py-2 text-xs font-semibold rounded-full text-brand-gray hover:text-brand-yellow hover:bg-white/5 transition-all">Aspirasi</a>
+                <a href="#documents"
+                    class="px-4 py-2 text-xs font-semibold rounded-full text-brand-gray hover:text-brand-yellow hover:bg-white/5 transition-all">Produk
+                    Hukum</a>
+            </nav>
+
+            <!-- CTA Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="openAspirasiModal()"
+                    class="relative group overflow-hidden px-5 py-2.5 rounded-full bg-brand-yellow text-brand-charcoal font-heading font-bold text-xs shadow-clay-yellow hover:bg-brand-gold transition-all duration-300 flex items-center gap-2 active:scale-95">
+                    <i data-lucide="send" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+                    <span>Sampaikan Aspirasi</span>
+                    <span
+                        class="absolute inset-0 w-1/2 h-full bg-white/30 transform -skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-700"></span>
+                </button>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()"
+                    class="md:hidden p-2.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                    aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileDropdown"
+            class="hidden absolute top-16 inset-x-4 glass-nav rounded-3xl p-5 border border-white/10 shadow-2xl flex-col gap-3 md:hidden">
+            <a href="#hero" onclick="toggleMobileMenu()"
+                class="px-4 py-2.5 rounded-xl font-medium text-sm text-white hover:bg-white/10">Beranda</a>
+            <a href="#about" onclick="toggleMobileMenu()"
+                class="px-4 py-2.5 rounded-xl font-medium text-sm text-brand-gray hover:bg-white/10">Tentang Kabinet</a>
+            <a href="#organization" onclick="toggleMobileMenu()"
+                class="px-4 py-2.5 rounded-xl font-medium text-sm text-brand-gray hover:bg-white/10">Struktur
+                Pengurus</a>
+            <a href="#news" onclick="toggleMobileMenu()"
+                class="px-4 py-2.5 rounded-xl font-medium text-sm text-brand-gray hover:bg-white/10">Warta &
+                Publikasi</a>
+            <a href="#aspirations" onclick="toggleMobileMenu()"
+                class="px-4 py-2.5 rounded-xl font-medium text-sm text-brand-gray hover:bg-white/10">Ruang Aspirasi
+                Mahasiswa</a>
+            <a href="#documents" onclick="toggleMobileMenu()"
+                class="px-4 py-2.5 rounded-xl font-medium text-sm text-brand-gray hover:bg-white/10">Produk Hukum &
+                Arsip</a>
+            <div class="pt-2 border-t border-white/10">
+                <button onclick="toggleMobileMenu(); openAspirasiModal();"
+                    class="w-full py-3 rounded-full bg-brand-yellow text-brand-charcoal font-heading font-bold text-xs flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    Sampaikan Aspirasi Sekarang
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: HERO SECTION                                                   -->
+    <!-- ========================================================================= -->
+    <section id="hero"
+        class="relative pt-36 pb-24 md:pt-44 md:pb-36 hero-mesh overflow-hidden border-b border-brand-graphite/40">
+        <!-- Ambient Radial Glows -->
+        <div
+            class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-yellow/10 blur-[130px] rounded-full pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/3 -right-24 w-96 h-96 bg-brand-gold/10 blur-[110px] rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+
+            <!-- Top Pill Tag -->
+            <div class="flex justify-center mb-6">
+                <div
+                    class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-graphite/70 border border-brand-yellow/30 text-brand-gray text-xs font-medium backdrop-blur-md shadow-clay">
+                    <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+                    <span class="text-white font-semibold">Kabinet Kolektiva 2026/2027</span>
+                    <span class="text-brand-gray/40">|</span>
+                    <span class="text-brand-yellow">Portal Digital Terpadu</span>
+                </div>
+            </div>
+
+            <!-- Main Headline -->
+            <div class="text-center max-w-4xl mx-auto">
+                <h1
+                    class="font-heading font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white leading-[1.08] mb-6">
+                    Suara Mahasiswa, <br>
+                    <span
+                        class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow via-brand-gold to-white">
+                        Gerak Bersama.
+                        <!-- Hand-drawn stylistic underline accent -->
+                        <svg class="absolute -bottom-2 md:-bottom-3 left-0 w-full h-3 md:h-4 text-brand-yellow/60"
+                            viewBox="0 0 300 20" fill="none">
+                            <path d="M5 14C80 4 220 4 295 14" stroke="currentColor" stroke-width="4"
+                                stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h1>
+                <p
+                    class="text-base sm:text-lg md:text-xl text-brand-gray/90 font-normal max-w-2xl mx-auto leading-relaxed mb-10">
+                    Ruang digital untuk mengenal organisasi, mengawal kebijakan kampus, mengikuti gerakan aksi BEM, dan
+                    menyampaikan aspirasi demi perubahan yang nyata dan berdaya.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#about"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-yellow hover:bg-brand-gold text-brand-charcoal font-heading font-bold text-sm tracking-wide shadow-clay-yellow transition-all duration-300 flex items-center justify-center gap-3 group active:scale-95">
+                        <span>Jelajahi Portal</span>
+                        <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                    <button onclick="openAspirasiModal()"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-graphite/80 hover:bg-brand-graphite text-white font-heading font-semibold text-sm border border-white/10 hover:border-brand-yellow/50 transition-all duration-300 flex items-center justify-center gap-3 shadow-clay active:scale-95">
+                        <i data-lucide="message-square-plus" class="w-4 h-4 text-brand-yellow"></i>
+                        <span>Sampaikan Aspirasi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Visual Deck: Glassmorphic Floating Cards -->
+            <div class="relative max-w-5xl mx-auto mt-6">
+
+                <!-- Central Showcase Bento Card -->
+                <div
+                    class="glass-card-dark rounded-3xl p-6 sm:p-8 border border-white/15 shadow-glass-dark relative z-10 overflow-hidden">
+                    <div
+                        class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none">
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+
+                        <!-- Left Info & Live Metric -->
+                        <div class="lg:col-span-7 space-y-5">
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/40">
+                                    Laporan Kinerja Triwulan I
+                                </span>
+                                <span class="text-xs text-brand-gray/60 font-medium">Diperbarui 10 Menit Lalu</span>
+                            </div>
+                            <h3 class="font-heading font-bold text-2xl sm:text-3xl text-white leading-snug">
+                                Transparansi Aksi, Advokasi Finansial, dan Ruang Partisipasi Terbuka.
+                            </h3>
+                            <p class="text-sm text-brand-gray/80 leading-relaxed">
+                                Kami telah menyalurkan 284 advokasi UKT banding semester genap, mengesahkan SOP ormawa
+                                terpadu, dan meluncurkan dana inkubasi karya mahasiswa.
+                            </p>
+
+                            <!-- Quick Stats Grid Inside Main Hero Card -->
+                            <div class="grid grid-cols-3 gap-3 pt-2">
+                                <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                                    <div class="font-heading font-extrabold text-2xl text-brand-yellow">94.2%</div>
+                                    <div class="text-[11px] text-brand-gray/70 font-medium">Aspirasi Dituntaskan</div>
+                                </div>
+                                <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                                    <div class="font-heading font-extrabold text-2xl text-white">38</div>
+                                    <div class="text-[11px] text-brand-gray/70 font-medium">Program Berjalan</div>
+                                </div>
+                                <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                                    <div class="font-heading font-extrabold text-2xl text-brand-gold">14</div>
+                                    <div class="text-[11px] text-brand-gray/70 font-medium">Fakultas Terkoneksi</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Interactive Mini Widget -->
+                        <div
+                            class="lg:col-span-5 bg-brand-charcoal/90 rounded-2xl p-5 border border-white/10 space-y-4">
+                            <div class="flex items-center justify-between pb-3 border-b border-brand-graphite">
+                                <div class="flex items-center gap-2.5">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow font-bold text-xs">
+                                        <i data-lucide="radio" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white">Live Sidang Terbuka</h4>
+                                        <p class="text-[10px] text-brand-gray/60">Komisi Aspirasi & Kampus Sejahtera</p>
+                                    </div>
+                                </div>
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            </div>
+
+                            <!-- Live Pipeline Item -->
+                            <div class="space-y-2.5">
+                                <div
+                                    class="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5 text-xs">
+                                    <div class="flex items-center justify-between font-semibold text-white mb-1">
+                                        <span>Advokasi Parkir & Transportasi Kampus</span>
+                                        <span class="text-[10px] text-brand-yellow">Tahap Rektorat</span>
+                                    </div>
+                                    <div class="w-full bg-brand-graphite h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-brand-yellow h-full rounded-full" style="width: 78%"></div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5 text-xs">
+                                    <div class="flex items-center justify-between font-semibold text-white mb-1">
+                                        <span>Restrukturisasi Dana Kegiatan HMD</span>
+                                        <span class="text-[10px] text-emerald-400">Selesai Dikaji</span>
+                                    </div>
+                                    <div class="w-full bg-brand-graphite h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-emerald-400 h-full rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quick Shortcut -->
+                            <a href="#aspirations"
+                                class="block w-full text-center py-2.5 rounded-xl bg-brand-graphite hover:bg-brand-graphite/80 text-brand-yellow text-xs font-semibold border border-brand-yellow/20 transition-all">
+                                Cek Progres Aspirasi Kamu &rarr;
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Floating Glassmorphic Pill 1: Top-Left Floating Badge -->
+                <div
+                    class="hidden md:flex absolute -top-8 -left-8 glass-card-dark rounded-2xl px-4 py-3 items-center gap-3 border border-white/20 shadow-clay z-20 animate-bounce duration-[4000ms]">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-brand-yellow text-brand-charcoal flex items-center justify-center font-bold shadow-clay-yellow">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white">Transparansi Finansial</div>
+                        <div class="text-[10px] text-brand-gray/80">LPJ Terbuka Setiap Bulan</div>
+                    </div>
+                </div>
+
+                <!-- Floating Glassmorphic Pill 2: Bottom-Right Floating Badge -->
+                <div
+                    class="hidden md:flex absolute -bottom-8 -right-8 glass-card-dark rounded-2xl px-4 py-3 items-center gap-3 border border-brand-yellow/30 shadow-clay z-20">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-brand-gold text-brand-charcoal flex items-center justify-center font-bold">
+                        <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white">Satgas Anti-Kekerasan</div>
+                        <div class="text-[10px] text-brand-yellow font-medium">Layanan Bantuan 24/7 Aktif</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: ABOUT BEM (KABINET ARUNIKA)                                    -->
+    <!-- ========================================================================= -->
+    <section id="about" class="py-24 bg-brand-graphite/30 relative border-b border-brand-graphite/50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-yellow mb-3">
+                        <span class="w-5 h-[2px] bg-brand-yellow"></span> Profil Organisasi
+                    </div>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+                        Kabinet Arunika 2026/2027.
+                    </h2>
+                </div>
+                <p class="text-brand-gray/80 max-w-md text-sm sm:text-base leading-relaxed">
+                    Nama <em>Arunika</em> melambangkan cahaya matahari pertama di ufuk timur. Harapan baru bagi
+                    pergerakan kemahasiswaan yang berdaya kritis, humanis, dan inklusif.
+                </p>
+            </div>
+
+            <!-- Bento Grid: Editorial Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+                <!-- Bento 1: Vision (Large Box) -->
+                <div
+                    class="md:col-span-8 glass-card-dark rounded-3xl p-8 border border-white/10 relative overflow-hidden flex flex-col justify-between">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none">
+                    </div>
+                    <div>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-brand-yellow border border-white/10 mb-5 inline-block">
+                            Visi Utama
+                        </span>
+                        <h3 class="font-heading font-bold text-2xl sm:text-3xl text-white leading-snug mb-4">
+                            "Mewujudkan BEM sebagai episentrum pergerakan mahasiswa yang solutif, independen, dan
+                            berakar kuat pada nilai kerakyatan serta keunggulan intelektual."
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-white/10 mt-6">
+                        <div class="space-y-1">
+                            <span class="text-brand-yellow font-heading font-black text-xl">01. Solutif</span>
+                            <p class="text-xs text-brand-gray/70">Bukan sekadar mengkritisi, namun menghadirkan
+                                alternatif rumusan solusi kampus.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-brand-yellow font-heading font-black text-xl">02. Progresif</span>
+                            <p class="text-xs text-brand-gray/70">Mendorong adaptasi digital, riset kebijakan berbasis
+                                data, dan wawasan global.</p>
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-brand-yellow font-heading font-black text-xl">03. Inklusif</span>
+                            <p class="text-xs text-brand-gray/70">Mewadahi seluruh spektrum latar belakang fakultas,
+                                minat, dan identitas mahasiswa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento 2: Quick Identity Card -->
+                <div
+                    class="md:col-span-4 bg-gradient-to-b from-brand-graphite to-brand-charcoal rounded-3xl p-8 border border-white/10 flex flex-col justify-between shadow-clay">
+                    <div>
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-brand-yellow text-brand-charcoal flex items-center justify-center font-bold text-xl shadow-clay-yellow mb-6">
+                            <i data-lucide="compass" class="w-6 h-6 stroke-[2.2]"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-xl text-white mb-2">Makna Lambang Surya</h4>
+                        <p class="text-xs text-brand-gray/80 leading-relaxed">
+                            Lambang surya fajar bersudut 14 melambangkan 14 rumpun fakultas yang bersatu mengarungi
+                            dinamika almamater menuju kejayaan bersama.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-brand-graphite">
+                        <div class="flex items-center justify-between text-xs text-brand-gray">
+                            <span>Masa Bakti</span>
+                            <span class="font-bold text-white">November 2026 – 2027</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-brand-gray mt-2">
+                            <span>Sekretariat</span>
+                            <span class="font-bold text-white">Pusgiwa Lt. 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento 3: 4 Core Pillars of Movement -->
+                <div class="md:col-span-12 glass-card-dark rounded-3xl p-8 border border-white/10">
+                    <div class="mb-6 flex items-center justify-between flex-wrap gap-4">
+                        <div>
+                            <h4 class="font-heading font-bold text-xl text-white">4 Pilar Gerakan Arunika</h4>
+                            <p class="text-xs text-brand-gray/70">Landasan strategis seluruh perumusan kebijakan dan
+                                program kerja kementerian.</p>
+                        </div>
+                        <span
+                            class="text-xs font-semibold text-brand-yellow px-3 py-1 bg-brand-yellow/10 rounded-full border border-brand-yellow/30">
+                            Integrated Action Model
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                        <div
+                            class="p-5 rounded-2xl bg-brand-charcoal/60 border border-white/5 hover:border-brand-yellow/40 transition-all group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-brand-yellow group-hover:text-brand-charcoal text-brand-yellow flex items-center justify-center transition-colors mb-4">
+                                <i data-lucide="scale" class="w-5 h-5"></i>
+                            </div>
+                            <h5 class="font-heading font-bold text-base text-white mb-1.5">Advokasi Berkeadilan</h5>
+                            <p class="text-xs text-brand-gray/70 leading-relaxed">Pengawalan pembiayaan UKT adil,
+                                beasiswa merata, serta pendampingan hak akademik mahasiswa.</p>
+                        </div>
+
+                        <div
+                            class="p-5 rounded-2xl bg-brand-charcoal/60 border border-white/5 hover:border-brand-yellow/40 transition-all group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-brand-yellow group-hover:text-brand-charcoal text-brand-yellow flex items-center justify-center transition-colors mb-4">
+                                <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                            </div>
+                            <h5 class="font-heading font-bold text-base text-white mb-1.5">Karya & Inovasi</h5>
+                            <p class="text-xs text-brand-gray/70 leading-relaxed">Fasilitasi riset aplikatif, inkubasi
+                                wirausaha rintisan muda, serta pameran karya ilmiah lintas fakultas.</p>
+                        </div>
+
+                        <div
+                            class="p-5 rounded-2xl bg-brand-charcoal/60 border border-white/5 hover:border-brand-yellow/40 transition-all group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-brand-yellow group-hover:text-brand-charcoal text-brand-yellow flex items-center justify-center transition-colors mb-4">
+                                <i data-lucide="users-2" class="w-5 h-5"></i>
+                            </div>
+                            <h5 class="font-heading font-bold text-base text-white mb-1.5">Pengabdian Berkelanjutan</h5>
+                            <p class="text-xs text-brand-gray/70 leading-relaxed">Gerakan desa binaan terpadu, respon
+                                tanggap bencana relawan kampus, dan literasi pesisir.</p>
+                        </div>
+
+                        <div
+                            class="p-5 rounded-2xl bg-brand-charcoal/60 border border-white/5 hover:border-brand-yellow/40 transition-all group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-brand-yellow group-hover:text-brand-charcoal text-brand-yellow flex items-center justify-center transition-colors mb-4">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <h5 class="font-heading font-bold text-base text-white mb-1.5">Digital & Keterbukaan</h5>
+                            <p class="text-xs text-brand-gray/70 leading-relaxed">Digitalisasi seluruh arsip surat,
+                                transparansi kas real-time, dan kanal penyerapan aspirasi berbasis web.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: ORGANIZATIONAL STRUCTURE                                       -->
+    <!-- ========================================================================= -->
+    <section id="organization" class="py-24 bg-brand-charcoal relative border-b border-brand-graphite/40">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-yellow mb-3">
+                    <span class="w-5 h-[2px] bg-brand-yellow"></span> Susunan Kepengurusan
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+                    Nakhoda & Birokrasi Kabinet.
+                </h2>
+                <p class="text-brand-gray/80 text-sm sm:text-base">
+                    Kenali pimpinan kabinet dan kementerian yang bertugas menerjemahkan aspirasi mahasiswa menjadi aksi
+                    nyata.
+                </p>
+            </div>
+
+            <!-- Presidium: Ketua & Wakil Ketua BEM (Top Level) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+
+                <!-- Ketua BEM Card -->
+                <div
+                    class="glass-card-dark rounded-3xl p-6 border border-white/10 hover:border-brand-yellow/50 transition-all duration-300 relative group overflow-hidden shadow-clay">
+                    <div
+                        class="absolute top-0 right-0 w-36 h-36 bg-brand-yellow/10 rounded-full blur-2xl group-hover:bg-brand-yellow/20 transition-all">
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div class="relative">
+                            <div
+                                class="w-32 h-32 rounded-2xl overflow-hidden bg-brand-graphite border-2 border-brand-yellow/40 shadow-inner flex items-center justify-center">
+                                <!-- SVG Avatar Placeholder with stylized modern character -->
+                                <svg class="w-24 h-24 text-brand-gray/70" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                                </svg>
+                            </div>
+                            <span
+                                class="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-full bg-brand-yellow text-brand-charcoal text-[10px] font-heading font-extrabold uppercase shadow-sm">
+                                Ketua
+                            </span>
+                        </div>
+
+                        <div class="text-center sm:text-left space-y-1.5 flex-1">
+                            <span class="text-xs font-semibold text-brand-yellow tracking-wider uppercase">Ketua BEM
+                                Arunika</span>
+                            <h3 class="font-heading font-bold text-2xl text-white">Rayhan Ardiansyah</h3>
+                            <p class="text-xs text-brand-gray/70">Fakultas Ilmu Sosial & Ilmu Politik '23</p>
+
+                            <div class="pt-3 flex items-center justify-center sm:justify-start gap-3">
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-brand-gray hover:text-white flex items-center justify-center transition-colors">
+                                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-brand-gray hover:text-white flex items-center justify-center transition-colors">
+                                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-brand-gray hover:text-white flex items-center justify-center transition-colors">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wakil Ketua BEM Card -->
+                <div
+                    class="glass-card-dark rounded-3xl p-6 border border-white/10 hover:border-brand-yellow/50 transition-all duration-300 relative group overflow-hidden shadow-clay">
+                    <div
+                        class="absolute top-0 right-0 w-36 h-36 bg-brand-gold/10 rounded-full blur-2xl group-hover:bg-brand-gold/20 transition-all">
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div class="relative">
+                            <div
+                                class="w-32 h-32 rounded-2xl overflow-hidden bg-brand-graphite border-2 border-brand-gold/40 shadow-inner flex items-center justify-center">
+                                <svg class="w-24 h-24 text-brand-gray/70" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                                </svg>
+                            </div>
+                            <span
+                                class="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-full bg-brand-gold text-brand-charcoal text-[10px] font-heading font-extrabold uppercase shadow-sm">
+                                Wakil
+                            </span>
+                        </div>
+
+                        <div class="text-center sm:text-left space-y-1.5 flex-1">
+                            <span class="text-xs font-semibold text-brand-gold tracking-wider uppercase">Wakil Ketua
+                                BEM</span>
+                            <h3 class="font-heading font-bold text-2xl text-white">Nabila Putri Larasati</h3>
+                            <p class="text-xs text-brand-gray/70">Fakultas Teknik Industri '23</p>
+
+                            <div class="pt-3 flex items-center justify-center sm:justify-start gap-3">
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-brand-gray hover:text-white flex items-center justify-center transition-colors">
+                                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-brand-gray hover:text-white flex items-center justify-center transition-colors">
+                                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 text-brand-gray hover:text-white flex items-center justify-center transition-colors">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Department Filter Pills & Interactive Showcase -->
+            <div
+                class="bg-brand-graphite/40 p-3 rounded-2xl max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-2 mb-10 border border-white/5">
+                <button onclick="switchDept('bph')" id="tab-bph"
+                    class="dept-tab active px-5 py-2 rounded-xl text-xs font-bold transition-all bg-brand-yellow text-brand-charcoal shadow-sm">
+                    BPH Inti
+                </button>
+                <button onclick="switchDept('polkam')" id="tab-polkam"
+                    class="dept-tab px-5 py-2 rounded-xl text-xs font-bold text-brand-gray hover:text-white transition-all">
+                    Kemenkoan Polkam
+                </button>
+                <button onclick="switchDept('advo')" id="tab-advo"
+                    class="dept-tab px-5 py-2 rounded-xl text-xs font-bold text-brand-gray hover:text-white transition-all">
+                    Advokasi & Kesejahteraan
+                </button>
+                <button onclick="switchDept('sosmas')" id="tab-sosmas"
+                    class="dept-tab px-5 py-2 rounded-xl text-xs font-bold text-brand-gray hover:text-white transition-all">
+                    Sosial & Lingkungan
+                </button>
+                <button onclick="switchDept('kominfo')" id="tab-kominfo"
+                    class="dept-tab px-5 py-2 rounded-xl text-xs font-bold text-brand-gray hover:text-white transition-all">
+                    Media & Kominfo
+                </button>
+            </div>
+
+            <!-- Department Cards Container (Dynamically Switched) -->
+            <div id="deptContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Rendered via JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: LATEST NEWS & ACTIVITIES (EDITORIAL MAGAZINE)                 -->
+    <!-- ========================================================================= -->
+    <section id="news" class="py-24 bg-brand-graphite/20 relative border-b border-brand-graphite/50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-yellow mb-3">
+                        <span class="w-5 h-[2px] bg-brand-yellow"></span> Warta & Rilis Gerakan
+                    </div>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+                        Kabar Terkini Arunika.
+                    </h2>
+                </div>
+
+                <!-- Filter Tabs for News -->
+                <div class="flex items-center gap-2 flex-wrap">
+                    <button
+                        class="px-4 py-1.5 rounded-full text-xs font-bold bg-brand-yellow text-brand-charcoal">Semua</button>
+                    <button
+                        class="px-4 py-1.5 rounded-full text-xs font-medium bg-white/5 text-brand-gray hover:text-white hover:bg-white/10 transition-colors">Advokasi</button>
+                    <button
+                        class="px-4 py-1.5 rounded-full text-xs font-medium bg-white/5 text-brand-gray hover:text-white hover:bg-white/10 transition-colors">Kajian
+                        Isu</button>
+                    <button
+                        class="px-4 py-1.5 rounded-full text-xs font-medium bg-white/5 text-brand-gray hover:text-white hover:bg-white/10 transition-colors">Event</button>
+                </div>
+            </div>
+
+            <!-- Editorial Bento Grid for News -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <!-- Featured Lead Article (Big Left Card) -->
+                <div
+                    class="lg:col-span-7 glass-card-dark rounded-3xl overflow-hidden border border-white/10 flex flex-col group hover:border-brand-yellow/40 transition-all duration-300">
+                    <div class="relative h-72 sm:h-96 w-full overflow-hidden bg-brand-graphite">
+                        <!-- Simulated Editorial Image -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-transparent to-transparent z-10">
+                        </div>
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
+                            style="background-image: linear-gradient(180deg, rgba(32,32,32,0.2) 0%, rgba(32,32,32,0.9) 100%), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80');">
+                        </div>
+
+                        <div class="absolute top-5 left-5 z-20 flex gap-2">
+                            <span
+                                class="px-3.5 py-1.5 rounded-full bg-brand-yellow text-brand-charcoal text-xs font-heading font-black uppercase tracking-wider shadow-clay-yellow">
+                                Kajian Strategis
+                            </span>
+                            <span
+                                class="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-medium">
+                                5 Menit Baca
+                            </span>
+                        </div>
+
+                        <div class="absolute bottom-6 left-6 right-6 z-20">
+                            <span
+                                class="text-xs text-brand-yellow font-semibold tracking-wider uppercase mb-1 block">November
+                                2026 • Rilis Pers Resmi</span>
+                            <h3
+                                class="font-heading font-bold text-2xl sm:text-3xl text-white group-hover:text-brand-yellow transition-colors leading-tight">
+                                Refleksi RUU Sistem Pendidikan Nasional: Menakar Dampak Terhadap Otonomi Finansial
+                                Kampus
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                        <p class="text-sm text-brand-gray/80 leading-relaxed mb-6">
+                            Biro Riset dan Kajian Kampus BEM Arunika merilis kertas kebijakan setebal 48 halaman
+                            membedah implikasi penyesuaian tarif PTN-BH terhadap keterjangkauan kuliah mahasiswa
+                            berpenghasilan menengah ke bawah.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-brand-yellow text-brand-charcoal flex items-center justify-center font-bold text-xs">
+                                    KA
+                                </div>
+                                <div>
+                                    <span class="text-xs font-semibold text-white block">Kemenkoan Analisis Data</span>
+                                    <span class="text-[10px] text-brand-gray/60">Arsip No: RLS/2026/044</span>
+                                </div>
+                            </div>
+                            <button onclick="readArticle('Refleksi RUU Sisdiknas')"
+                                class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-yellow hover:underline">
+                                Baca Lengkap <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Editorial Column (Right 3 Cards) -->
+                <div class="lg:col-span-5 flex flex-col gap-5">
+
+                    <!-- Card 2 -->
+                    <div
+                        class="glass-card-dark rounded-2xl p-5 border border-white/10 hover:border-brand-yellow/30 transition-all flex flex-col justify-between group">
+                        <div class="flex items-start justify-between gap-4 mb-2">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-white/10 text-brand-gold text-[10px] font-bold uppercase tracking-wider">
+                                Advokasi UKT
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60">Kemarin</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-lg text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Buka Posko Pendampingan Banding UKT Semester Genap 2026/2027
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 line-clamp-2 mb-3">
+                            Kementerian Advokesma menyiapkan 20 narahubung fakultas untuk verifikasi berkas sanggahan
+                            finansial sebelum tenggat rektorat.
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/5 text-xs">
+                            <span class="text-brand-gray/60 text-[11px]">Advokesma BEM</span>
+                            <button onclick="readArticle('Posko Pendampingan Banding UKT')"
+                                class="text-brand-yellow font-semibold text-xs flex items-center gap-1">
+                                Detail <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="glass-card-dark rounded-2xl p-5 border border-white/10 hover:border-brand-yellow/30 transition-all flex flex-col justify-between group">
+                        <div class="flex items-start justify-between gap-4 mb-2">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                                Sosial Masyarakat
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60">3 Hari Lalu</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-lg text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Ekspedisi Arunika Mengabdi: Pemasangan Solar Cell di Dusun Cikoneng
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 line-clamp-2 mb-3">
+                            Kolaborasi BEM dengan Fakultas Teknik berhasil mengalirkan listrik terbarukan untuk balai
+                            belajar anak dan penerangan jalan desa.
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/5 text-xs">
+                            <span class="text-brand-gray/60 text-[11px]">Biro Pengabdian</span>
+                            <button onclick="readArticle('Ekspedisi Arunika Mengabdi')"
+                                class="text-brand-yellow font-semibold text-xs flex items-center gap-1">
+                                Detail <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="glass-card-dark rounded-2xl p-5 border border-white/10 hover:border-brand-yellow/30 transition-all flex flex-col justify-between group">
+                        <div class="flex items-start justify-between gap-4 mb-2">
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-brand-yellow/20 text-brand-yellow text-[10px] font-bold uppercase tracking-wider">
+                                Event Kampus
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60">1 Minggu Lalu</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-lg text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Pekan Raya Mahasiswa 2026 Segera Hadir: Panggung Kreativitas & Komunitas
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 line-clamp-2 mb-3">
+                            Kompetisi seni, expo UMKM rintisan mahasiswa, serta panggung musik nusantara siap meramaikan
+                            auditorium pusat.
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/5 text-xs">
+                            <span class="text-brand-gray/60 text-[11px]">Panitia PRM 2026</span>
+                            <button onclick="readArticle('Pekan Raya Mahasiswa 2026')"
+                                class="text-brand-yellow font-semibold text-xs flex items-center gap-1">
+                                Detail <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom View All Button -->
+            <div class="mt-12 text-center">
+                <a href="#news"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-graphite/80 hover:bg-brand-graphite text-white text-xs font-heading font-bold border border-white/10 hover:border-brand-yellow/40 transition-all">
+                    <span>Lihat Seluruh Arsip Artikel & Berita</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-brand-yellow"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 6: STUDENT ASPIRATIONS (RUANG ASPIRASI INTERAKTIF)                -->
+    <!-- ========================================================================= -->
+    <section id="aspirations"
+        class="py-24 bg-brand-charcoal relative border-b border-brand-graphite/50 overflow-hidden">
+        <!-- Ambient yellow background glow -->
+        <div
+            class="absolute -bottom-24 left-1/4 w-[600px] h-[300px] bg-brand-yellow/10 blur-[130px] rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div
+                    class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow text-xs font-bold uppercase tracking-wider mb-3">
+                    <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Ruang Aspirasi Terpadu
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+                    Your Voice Matters.
+                </h2>
+                <p class="text-brand-gray/80 text-sm sm:text-base leading-relaxed">
+                    Setiap suara punya arti. Sampaikan kritik, keluhan fasilitas, masukan akademik, maupun ide gerakan
+                    tanpa rasa takut. Didukung enkripsi dan opsi anonim.
+                </p>
+            </div>
+
+            <!-- Main Dual Panel: Submit vs Track Aspirasi -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+
+                <!-- Left Panel: Interactive Submission Form -->
+                <div
+                    class="lg:col-span-7 glass-card-dark rounded-3xl p-6 sm:p-8 border border-white/15 shadow-glass-dark">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-graphite">
+                        <div>
+                            <h3 class="font-heading font-bold text-xl text-white">Formulir Penyampaian Aspirasi</h3>
+                            <p class="text-xs text-brand-gray/70">Diterima langsung oleh Komisi Aspirasi BEM</p>
+                        </div>
+
+                        <!-- Anonymous Switch -->
+                        <div
+                            class="flex items-center gap-2 bg-brand-charcoal px-3 py-1.5 rounded-full border border-white/10">
+                            <span id="anonLabel" class="text-xs font-semibold text-brand-yellow">Mode Anonim</span>
+                            <button type="button" id="toggleAnonBtn" onclick="toggleAnonymous()"
+                                class="w-10 h-5 bg-brand-yellow rounded-full relative transition-colors focus:outline-none p-0.5">
+                                <div id="anonKnob"
+                                    class="w-4 h-4 bg-brand-charcoal rounded-full transition-transform translate-x-5">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="aspirationForm" onsubmit="handleAspirationSubmit(event)" class="space-y-4">
+
+                        <!-- Identified Fields (Hidden if Anonymous is ON) -->
+                        <div id="identityFields" class="hidden grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-brand-gray mb-1.5">Nama Lengkap</label>
+                                <input type="text" id="senderName" placeholder="Contoh: Dimas Prakoso"
+                                    class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-brand-gray mb-1.5">NPM / Fakultas</label>
+                                <input type="text" id="senderNim" placeholder="2106728xxx / FT"
+                                    class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-brand-gray mb-1.5">Kategori Bidang</label>
+                                <select id="aspirationCategory"
+                                    class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                                    <option value="Fasilitas & Infrastruktur Kampus">Fasilitas & Infrastruktur</option>
+                                    <option value="Kebijakan UKT & Finansial">Kebijakan UKT & Finansial</option>
+                                    <option value="Layanan Akademik & Dosen">Layanan Akademik & Kurikulum</option>
+                                    <option value="Keamanan & Ruang Aman Kampus">Keamanan & Ruang Aman</option>
+                                    <option value="Kegiatan Kemahasiswaan & Ormawa">Kegiatan Kemahasiswaan</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-brand-gray mb-1.5">Tingkat Urgensi</label>
+                                <select id="aspirationUrgency"
+                                    class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                                    <option value="Normal">Normal (Kajian Rutin)</option>
+                                    <option value="Mendesak">Mendesak (Butuh Tindakan Cepat)</option>
+                                    <option value="Kritis">Kritis (Terkait Hak Mahasiswa Terancam)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-brand-gray mb-1.5">Judul Aspirasi</label>
+                            <input type="text" id="aspirationTitle" required
+                                placeholder="Tuliskan intisari pokok masalah atau usulan..."
+                                class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-brand-gray mb-1.5">Deskripsi Lengkap & Lokasi
+                                Terkait</label>
+                            <textarea id="aspirationBody" rows="4" required
+                                placeholder="Jelaskan kronologi, rincian keluhan, atau ide konkret secara terperinci..."
+                                class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none"></textarea>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between">
+                            <span class="text-[11px] text-brand-gray/60 flex items-center gap-1.5">
+                                <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                                Data tersimpan aman dalam server enkripsi BEM.
+                            </span>
+
+                            <button type="submit"
+                                class="px-6 py-3 rounded-full bg-brand-yellow text-brand-charcoal font-heading font-bold text-xs shadow-clay-yellow hover:bg-brand-gold transition-all active:scale-95 flex items-center gap-2">
+                                <i data-lucide="send" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+                                Kirim Aspirasi
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Success Alert Box (Initially Hidden) -->
+                    <div id="submitSuccessBox"
+                        class="hidden mt-4 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs space-y-2">
+                        <div class="flex items-center gap-2 font-bold">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Aspirasi Berhasil Dikirimkan!
+                        </div>
+                        <p>ID Tiket Pelacakan Anda: <span id="generatedTicketId"
+                                class="font-mono font-bold text-white bg-black/40 px-2 py-0.5 rounded">ASP-2026-991</span>
+                        </p>
+                        <p class="text-[11px] text-emerald-400/80">Simpan tiket ini untuk memeriksa tahapan verifikasi
+                            tanpa memerlukan login akun.</p>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Real-time Ticket Tracker -->
+                <div
+                    class="lg:col-span-5 flex flex-col justify-between glass-card-dark rounded-3xl p-6 sm:p-8 border border-white/15 shadow-glass-dark">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div
+                                class="w-10 h-10 rounded-2xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center font-bold">
+                                <i data-lucide="search-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-white">Lacak Status Aspirasi</h3>
+                                <p class="text-xs text-brand-gray/70">Transparansi alur tindak lanjut publik</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-gray/80 leading-relaxed mb-6">
+                            Masukkan ID Tiket yang kamu terima untuk melihat posisi dokumen kajian di meja pimpinan atau
+                            komisi dekanat.
+                        </p>
+
+                        <!-- Search Ticket Input -->
+                        <div class="flex gap-2 mb-6">
+                            <input type="text" id="trackInput" placeholder="Contoh: ASP-2026-089" value="ASP-2026-089"
+                                class="flex-1 px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs font-mono focus:border-brand-yellow focus:outline-none uppercase">
+                            <button onclick="trackAspiration()"
+                                class="px-4 py-2.5 rounded-xl bg-brand-graphite hover:bg-white/10 text-brand-yellow font-bold text-xs border border-brand-yellow/30 transition-colors">
+                                Lacak
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Pipeline Display -->
+                        <div id="trackerResult"
+                            class="space-y-4 bg-brand-charcoal/80 p-4 rounded-2xl border border-white/5">
+                            <div class="flex items-center justify-between pb-2 border-b border-white/10 text-xs">
+                                <div>
+                                    <span class="text-brand-gray/60 block text-[10px]">Nomor Dokumen</span>
+                                    <span class="font-mono font-bold text-white text-xs"
+                                        id="trackedIdDisplay">ASP-2026-089</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-yellow/20 text-brand-yellow"
+                                    id="trackedStatusBadge">
+                                    Tahap Verifikasi
+                                </span>
+                            </div>
+
+                            <!-- Pipeline Steps -->
+                            <div class="space-y-3 pt-2">
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-emerald-500 text-brand-charcoal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                                        ✓
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-white">1. Aspirasi Diterima Sistem</h5>
+                                        <p class="text-[10px] text-brand-gray/70">Tervalidasi melalui portal online BEM
+                                            Arunika.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-brand-yellow text-brand-charcoal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 animate-pulse">
+                                        2
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-brand-yellow">2. Telaah Biro Advokasi</h5>
+                                        <p class="text-[10px] text-brand-gray/70">Kompilasi bukti lapangan bersama
+                                            perwakilan mahasiswa terkait.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3 opacity-40">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-brand-graphite text-brand-gray flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                                        3
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-white">3. Audiensi Pimpinan Universitas</h5>
+                                        <p class="text-[10px] text-brand-gray/70">Penyampaian nota keberatan/usulan pada
+                                            forum pimpinan rektorat.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3 opacity-40">
+                                    <div
+                                        class="w-6 h-6 rounded-full bg-brand-graphite text-brand-gray flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                                        4
+                                    </div>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-white">4. Penerbitan Kebijakan & Solusi</h5>
+                                        <p class="text-[10px] text-brand-gray/70">Pengumuman hasil akhir secara terbuka
+                                            untuk umum.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                        <span class="text-[11px] text-brand-gray/60">Butuh bantuan darurat advokasi hukum?</span>
+                        <a href="https://wa.me/" target="_blank"
+                            class="block mt-1 text-xs font-bold text-brand-yellow hover:underline">
+                            Hubungi Hotline Advokasi: +62 812-9988-7766
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 7: OFFICIAL DOCUMENTS & LEGAL REPOSITORY (PRODUK HUKUM)           -->
+    <!-- ========================================================================= -->
+    <section id="documents" class="py-24 bg-brand-graphite/20 relative border-b border-brand-graphite/40">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-yellow mb-3">
+                        <span class="w-5 h-[2px] bg-brand-yellow"></span> Keterbukaan Arsip Digital
+                    </div>
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+                        Produk Hukum & Arsip Resmi.
+                    </h2>
+                </div>
+                <p class="text-brand-gray/80 max-w-md text-sm leading-relaxed">
+                    Pusat unduhan surat keputusan, undang-undang ormawa, panduan teknis organisasi, dan laporan
+                    pertanggungjawaban terbuka bagi seluruh sivitas akademika.
+                </p>
+            </div>
+
+            <!-- Search & Category Filter Toolbar -->
+            <div
+                class="glass-card-dark p-4 rounded-2xl border border-white/10 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+
+                <!-- Search bar -->
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search"
+                        class="w-4 h-4 text-brand-gray/60 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="docSearch" onkeyup="filterDocs()" placeholder="Cari nama atau nomor surat..."
+                        class="w-full pl-10 pr-4 py-2 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                </div>
+
+                <!-- Filter Pill Buttons -->
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+                    <button onclick="filterDocCategory('all')"
+                        class="doc-filter active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-yellow text-brand-charcoal whitespace-nowrap">Semua
+                        Dokumen</button>
+                    <button onclick="filterDocCategory('sk')"
+                        class="doc-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/5 text-brand-gray hover:text-white whitespace-nowrap">Surat
+                        Keputusan (SK)</button>
+                    <button onclick="filterDocCategory('po')"
+                        class="doc-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/5 text-brand-gray hover:text-white whitespace-nowrap">Peraturan
+                        Organisasi</button>
+                    <button onclick="filterDocCategory('lpj')"
+                        class="doc-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/5 text-brand-gray hover:text-white whitespace-nowrap">LPJ
+                        Publik</button>
+                    <button onclick="filterDocCategory('sop')"
+                        class="doc-filter px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/5 text-brand-gray hover:text-white whitespace-nowrap">Pedoman
+                        & SOP</button>
+                </div>
+
+            </div>
+
+            <!-- Document Cards Grid -->
+            <div id="docsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Doc 1 -->
+                <div
+                    class="doc-item sk glass-card-dark rounded-2xl p-6 border border-white/10 hover:border-brand-yellow/40 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-brand-yellow/15 text-brand-yellow text-[10px] font-bold font-mono">
+                                SK/012/BEM/XI/2026
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60 font-semibold">2026</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-base text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Ketetapan Pengesahan Pengurus Kabinet Arunika Periode 2026-2027
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 leading-relaxed mb-4">
+                            Legalitas susunan kepengurusan lengkap, kementerian terpadu, dan pembagian wewenang
+                            eksekutif mahasiswa.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-brand-gray/60 flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF • 2.4 MB
+                        </span>
+                        <button onclick="downloadMockDoc('SK Ketetapan Pengesahan')"
+                            class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-brand-yellow hover:text-brand-charcoal text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doc 2 -->
+                <div
+                    class="doc-item po glass-card-dark rounded-2xl p-6 border border-white/10 hover:border-brand-yellow/40 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-brand-gold/15 text-brand-gold text-[10px] font-bold font-mono">
+                                PO/004/KONGRES/2026
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60 font-semibold">2026</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-base text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Peraturan Organisasi Mengenai Tata Kelola Lembaga Kemahasiswaan
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 leading-relaxed mb-4">
+                            Pedoman sinergi hierarki, hak budgeting, dan alur perizinan kegiatan UKM/HMD tingkat
+                            universitas.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-brand-gray/60 flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF • 4.1 MB
+                        </span>
+                        <button onclick="downloadMockDoc('Peraturan Tata Kelola LK')"
+                            class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-brand-yellow hover:text-brand-charcoal text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doc 3 -->
+                <div
+                    class="doc-item lpj glass-card-dark rounded-2xl p-6 border border-white/10 hover:border-brand-yellow/40 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-400 text-[10px] font-bold font-mono">
+                                LPJ/TW-1/BEM/2026
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60 font-semibold">2026</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-base text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Laporan Pertanggungjawaban Realisasi Anggaran Triwulan I
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 leading-relaxed mb-4">
+                            Rincian audit dana ormawa, penerimaan kas, dan pengeluaran 12 program kerja utama terbuka
+                            untuk publik.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-brand-gray/60 flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF • 8.6 MB
+                        </span>
+                        <button onclick="downloadMockDoc('LPJ Realisasi Anggaran TW-1')"
+                            class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-brand-yellow hover:text-brand-charcoal text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doc 4 -->
+                <div
+                    class="doc-item sop glass-card-dark rounded-2xl p-6 border border-white/10 hover:border-brand-yellow/40 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-brand-yellow/15 text-brand-yellow text-[10px] font-bold font-mono">
+                                SOP/002/ADVOKASI/2026
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60 font-semibold">2026</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-base text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Standar Operasional Prosedur Bantuan Hukum & Penanganan Pelecehan
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 leading-relaxed mb-4">
+                            Mekanisme pendampingan saksi dan korban, perlindungan kerahasiaan identitas, dan advokasi
+                            psikologis.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-brand-gray/60 flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF • 1.9 MB
+                        </span>
+                        <button onclick="downloadMockDoc('SOP Bantuan Hukum Satgas')"
+                            class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-brand-yellow hover:text-brand-charcoal text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doc 5 -->
+                <div
+                    class="doc-item sk glass-card-dark rounded-2xl p-6 border border-white/10 hover:border-brand-yellow/40 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-brand-yellow/15 text-brand-yellow text-[10px] font-bold font-mono">
+                                SK/009/PANITIA/2026
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60 font-semibold">2026</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-base text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Surat Keputusan Panitia Pelaksana Pekan Raya Mahasiswa 2026
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 leading-relaxed mb-4">
+                            Daftar koordinator divisi dan susunan panitia perayaan akbar ulang tahun universitas ke-74.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-brand-gray/60 flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF • 1.2 MB
+                        </span>
+                        <button onclick="downloadMockDoc('SK Panitia PRM 2026')"
+                            class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-brand-yellow hover:text-brand-charcoal text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doc 6 -->
+                <div
+                    class="doc-item po glass-card-dark rounded-2xl p-6 border border-white/10 hover:border-brand-yellow/40 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-brand-gold/15 text-brand-gold text-[10px] font-bold font-mono">
+                                PO/008/PEMILU/2026
+                            </span>
+                            <span class="text-[11px] text-brand-gray/60 font-semibold">2026</span>
+                        </div>
+                        <h4
+                            class="font-heading font-bold text-base text-white group-hover:text-brand-yellow transition-colors leading-snug mb-2">
+                            Pedoman Teknis Pemilihan Raya Mahasiswa (PEMIRA) Terbuka
+                        </h4>
+                        <p class="text-xs text-brand-gray/70 leading-relaxed mb-4">
+                            Aturan kampanye digital, kode etik calon ketua, dan protokol sistem e-voting
+                            terdesentralisasi.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <span class="text-[11px] text-brand-gray/60 flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> PDF • 3.5 MB
+                        </span>
+                        <button onclick="downloadMockDoc('Pedoman Teknis Pemira')"
+                            class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-brand-yellow hover:text-brand-charcoal text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 8: MODERN SPACIOUS FOOTER                                         -->
+    <!-- ========================================================================= -->
+    <footer
+        class="bg-brand-charcoal pt-20 pb-12 border-t border-brand-graphite/70 text-slate-300 relative overflow-hidden">
+        <!-- Subtle top glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-brand-yellow/40 to-transparent">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-brand-graphite/40">
+
+                <!-- Brand Info -->
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-yellow flex items-center justify-center text-brand-charcoal font-heading font-black text-xl shadow-clay-yellow">
+                            B
+                        </div>
+                        <div>
+                            <span class="font-heading font-bold text-lg text-white tracking-wide block">BEM
+                                ARUNIKA</span>
+                            <span class="text-xs text-brand-gray/70 tracking-wider uppercase font-medium">Badan
+                                Eksekutif Mahasiswa Universitas</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-brand-gray/80 leading-relaxed max-w-sm">
+                        Wadah independen perjuangan, kreasi, dan pengabdian seluruh mahasiswa. Berkomitmen menghadirkan
+                        pergerakan yang berakar, solutif, dan inklusif bagi almamater dan Indonesia.
+                    </p>
+
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-brand-graphite/80 hover:bg-brand-yellow hover:text-brand-charcoal text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+                            aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-brand-graphite/80 hover:bg-brand-yellow hover:text-brand-charcoal text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+                            aria-label="Twitter / X">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-brand-graphite/80 hover:bg-brand-yellow hover:text-brand-charcoal text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+                            aria-label="YouTube">
+                            <i data-lucide="youtube" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-brand-graphite/80 hover:bg-brand-yellow hover:text-brand-charcoal text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+                            aria-label="LinkedIn">
+                            <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#"
+                            class="w-9 h-9 rounded-full bg-brand-graphite/80 hover:bg-brand-yellow hover:text-brand-charcoal text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+                            aria-label="Podcast Spotify">
+                            <i data-lucide="podcast" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links: Navigasi -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Navigasi Utama</h4>
+                    <ul class="space-y-2.5 text-xs text-brand-gray/80">
+                        <li><a href="#hero" class="hover:text-brand-yellow transition-colors">Beranda Utama</a></li>
+                        <li><a href="#about" class="hover:text-brand-yellow transition-colors">Visi & Misi Kabinet</a>
+                        </li>
+                        <li><a href="#organization" class="hover:text-brand-yellow transition-colors">Struktur
+                                Organisasi</a></li>
+                        <li><a href="#news" class="hover:text-brand-yellow transition-colors">Warta & Publikasi</a></li>
+                        <li><a href="#aspirations" class="hover:text-brand-yellow transition-colors">Ruang Aspirasi</a>
+                        </li>
+                        <li><a href="#documents" class="hover:text-brand-yellow transition-colors">Produk Hukum
+                                Resmi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links: Layanan Mahasiswa -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Layanan Terpadu</h4>
+                    <ul class="space-y-2.5 text-xs text-brand-gray/80">
+                        <li><a href="#aspirations" class="hover:text-brand-yellow transition-colors">Lacak Tiket
+                                Aspirasi</a></li>
+                        <li><a href="#" class="hover:text-brand-yellow transition-colors">Advokasi Bantuan UKT</a></li>
+                        <li><a href="#" class="hover:text-brand-yellow transition-colors">Satgas Anti-Kekerasan</a></li>
+                        <li><a href="#" class="hover:text-brand-yellow transition-colors">Peminjaman Ruang Ormawa</a>
+                        </li>
+                        <li><a href="#" class="hover:text-brand-yellow transition-colors">Inkubasi Bisnis Kampus</a>
+                        </li>
+                        <li><a href="#" class="hover:text-brand-yellow transition-colors">Kalender Kegiatan Ormawa</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Secretariat Address -->
+                <div class="lg:col-span-3 space-y-4">
+                    <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider">Sekretariat Pusat
+                    </h4>
+                    <p class="text-xs text-brand-gray/80 leading-relaxed">
+                        Gedung Pusat Kegiatan Mahasiswa (PUSGIWA) Lantai 2, Kampus Pusat Universitas Indonesia, Depok
+                        16424.
+                    </p>
+                    <div class="space-y-1.5 text-xs text-brand-gray/90 pt-1">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                            <span>sekretariat@bem.ac.id</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-yellow"></i>
+                            <span>(021) 7888-1234 ext 401</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright and Bottom Disclaimer -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-gray/60 gap-4">
+                <div>
+                    &copy; 2026 BEM Universitas. Dikembangkan dengan bangga oleh Biro Media & Komunikasi Digital
+                    (KOMINFO).
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-brand-yellow transition-colors">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-brand-yellow transition-colors">Pedoman Komunitas</a>
+                    <a href="#" class="hover:text-brand-yellow transition-colors">Akses API Ormawa</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 1: SUBMIT ASPIRASI POPUP MODAL                                      -->
+    <!-- ========================================================================= -->
+    <div id="aspirasiModal"
+        class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div
+            class="glass-card-dark rounded-3xl w-full max-w-lg p-6 sm:p-8 border border-white/20 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeAspirasiModal()"
+                class="absolute top-5 right-5 text-brand-gray hover:text-white p-1 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-5">
+                <div
+                    class="w-10 h-10 rounded-2xl bg-brand-yellow text-brand-charcoal flex items-center justify-center font-bold">
+                    <i data-lucide="send" class="w-5 h-5 stroke-[2.5]"></i>
+                </div>
+                <div>
+                    <h3 class="font-heading font-bold text-xl text-white">Sampaikan Suaramu</h3>
+                    <p class="text-xs text-brand-gray/70">Kritik, saran, & advokasi langsung ke BEM</p>
+                </div>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-brand-gray mb-1">Kategori Masalah</label>
+                    <select
+                        class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                        <option>Advokasi UKT & Sanggahan Finansial</option>
+                        <option>Fasilitas Kelas & Laboratorium Rusak</option>
+                        <option>Keamanan & Penerangan Kampus</option>
+                        <option>Layanan Birokrasi Akademik</option>
+                        <option>Ide Inisiatif Program BEM</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-brand-gray mb-1">Judul Ringkas</label>
+                    <input type="text" required placeholder="Contoh: AC Gedung A lantai 3 mati total"
+                        class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-brand-gray mb-1">Detail Keluhan / Masukan</label>
+                    <textarea rows="4" required
+                        placeholder="Tuliskan sedetail mungkin untuk mempermudah investigasi tim advokasi..."
+                        class="w-full px-4 py-2.5 rounded-xl bg-brand-charcoal border border-white/10 text-white text-xs focus:border-brand-yellow focus:outline-none"></textarea>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" id="modalAnon"
+                        class="rounded text-brand-yellow focus:ring-0 bg-brand-charcoal border-white/20">
+                    <label for="modalAnon" class="text-xs text-brand-gray">Kirimkan secara Anonim (Sembunyikan
+                        profil)</label>
+                </div>
+
+                <div class="pt-3 flex justify-end gap-3">
+                    <button type="button" onclick="closeAspirasiModal()"
+                        class="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-brand-gray hover:text-white text-xs font-bold transition-colors">
+                        Batal
+                    </button>
+                    <button type="submit"
+                        class="px-6 py-2.5 rounded-xl bg-brand-yellow text-brand-charcoal font-heading font-bold text-xs shadow-clay-yellow hover:bg-brand-gold transition-colors">
+                        Kirimkan Sekarang
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- MODAL 2: DETAIL ARTIKEL / DOKUMEN MODAL                                   -->
+    <!-- ========================================================================= -->
+    <div id="infoModal"
+        class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div
+            class="glass-card-dark rounded-3xl w-full max-w-lg p-6 sm:p-8 border border-white/20 shadow-2xl relative animate-in fade-in duration-200">
+            <button onclick="closeInfoModal()"
+                class="absolute top-5 right-5 text-brand-gray hover:text-white p-1 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div
+                class="w-12 h-12 rounded-2xl bg-brand-yellow/20 text-brand-yellow flex items-center justify-center mb-4">
+                <i data-lucide="file-check-2" class="w-6 h-6"></i>
+            </div>
+
+            <h3 id="infoModalTitle" class="font-heading font-bold text-xl text-white mb-2">Detail Dokumen</h3>
+            <p id="infoModalBody" class="text-xs text-brand-gray/80 leading-relaxed mb-6">
+                Dokumen ini sedang disiapkan untuk pengunduhan resmi dari server arsip BEM.
+            </p>
+
+            <div
+                class="p-3.5 rounded-xl bg-brand-charcoal border border-white/10 flex items-center justify-between text-xs mb-6">
+                <span class="text-brand-gray/60">Status Keabsahan:</span>
+                <span class="text-emerald-400 font-bold flex items-center gap-1">
+                    <i data-lucide="check" class="w-3.5 h-3.5"></i> Terverifikasi Tanda Tangan Digital
+                </span>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="closeInfoModal()"
+                    class="px-6 py-2.5 rounded-xl bg-brand-yellow text-brand-charcoal font-heading font-bold text-xs shadow-clay-yellow hover:bg-brand-gold transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- JAVASCRIPT: DATA & INTERACTIVITY                                          -->
+    <!-- ========================================================================= -->
+    <script>
+        // Initialize Lucide Icons on DOM load
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            renderDepartment('bph');
+        });
+
+        // -------------------------------------------------------------------------
+        // 1. Mobile Menu Toggle
+        // -------------------------------------------------------------------------
+        function toggleMobileMenu() {
+            const dropdown = document.getElementById('mobileDropdown');
+            dropdown.classList.toggle('hidden');
+            dropdown.classList.toggle('flex');
+        }
+
+        // -------------------------------------------------------------------------
+        // 2. Department Data & Switching Logic (Section 4)
+        // -------------------------------------------------------------------------
+        const departmentsData = {
+            bph: [
+                { name: "Rayhan Ardiansyah", role: "Ketua BEM Arunika", faculty: "FISIP '23", initial: "RA" },
+                { name: "Nabila Putri Larasati", role: "Wakil Ketua BEM", faculty: "FT '23", initial: "NP" },
+                { name: "Fathir Muhammad", role: "Sekretaris Jenderal", faculty: "FH '23", initial: "FM" },
+                { name: "Sarah Alika", role: "Bendahara Umum", faculty: "FEB '23", initial: "SA" }
+            ],
+            polkam: [
+                { name: "Gibran Daniswara", role: "Menteri Koordinator Polkam", faculty: "FISIP '23", initial: "GD" },
+                { name: "Farah Annisa", role: "Menteri Kajian Strategis Kampus", faculty: "FIB '24", initial: "FA" },
+                { name: "Rizky Pratama", role: "Biro Hukum & Tata Negara", faculty: "FH '23", initial: "RP" },
+                { name: "Zidan Ramadhan", role: "Staf Riset Kebijakan", faculty: "FIA '24", initial: "ZR" }
+            ],
+            advo: [
+                { name: "Aisyah Zahra", role: "Menteri Advokasi & Kesejahteraan", faculty: "FEB '23", initial: "AZ" },
+                { name: "Bagus Wicaksono", role: "Biro Advokasi Finansial & UKT", faculty: "FKM '23", initial: "BW" },
+                { name: "Claudia Melati", role: "Biro Pendampingan Akademik", faculty: "FPsi '24", initial: "CM" },
+                { name: "Arya Putra", role: "Divisi Satgas Anti-Kekerasan", faculty: "FH '24", initial: "AP" }
+            ],
+            sosmas: [
+                { name: "David Kristianto", role: "Menteri Sosial & Pengabdian", faculty: "FMIPA '23", initial: "DK" },
+                { name: "Siti Rahmawati", role: "Biro Lingkungan & Iklim", faculty: "Fasilkom '24", initial: "SR" },
+                { name: "Hafiz Maulana", role: "Biro Desa Binaan & Relawan", faculty: "FK '23", initial: "HM" },
+                { name: "Indah Permata", role: "Divisi Bantuan Bencana", faculty: "FF '24", initial: "IP" }
+            ],
+            kominfo: [
+                { name: "Kevin Sanjaya", role: "Menteri Komunikasi & Media", faculty: "Fasilkom '23", initial: "KS" },
+                { name: "Aurelia Amanda", role: "Biro Kreatif & Visual Desain", faculty: "FIB '24", initial: "AA" },
+                { name: "Reza Ananta", role: "Biro Web & Digital Product", faculty: "Fasilkom '24", initial: "RA" },
+                { name: "Nadya Kusuma", role: "Divisi Humas & Media Partner", faculty: "FISIP '24", initial: "NK" }
+            ]
+        };
+
+        function switchDept(key) {
+            document.querySelectorAll('.dept-tab').forEach(btn => {
+                btn.classList.remove('bg-brand-yellow', 'text-brand-charcoal', 'shadow-sm');
+                btn.classList.add('text-brand-gray');
+            });
+
+            const activeBtn = document.getElementById(`tab-${key}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-yellow', 'text-brand-charcoal', 'shadow-sm');
+                activeBtn.classList.remove('text-brand-gray');
+            }
+
+            renderDepartment(key);
+        }
+
+        function renderDepartment(key) {
+            const container = document.getElementById('deptContainer');
+            const list = departmentsData[key] || [];
+
+            container.innerHTML = list.map(member => `
+        <div class="glass-card-dark rounded-2xl p-5 border border-white/10 hover:border-brand-yellow/40 transition-all duration-300 group flex flex-col justify-between">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center font-heading font-extrabold text-brand-yellow text-lg group-hover:scale-105 transition-transform shadow-inner">
+              ${member.initial}
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold text-brand-yellow block tracking-wider">${member.role}</span>
+              <h4 class="font-heading font-bold text-base text-white leading-tight">${member.name}</h4>
+              <p class="text-[11px] text-brand-gray/60">${member.faculty}</p>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs">
+            <span class="text-[10px] text-brand-gray/60">Aktif Kabinet Arunika</span>
+            <div class="flex gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+            lucide.createIcons();
+        }
+
+        // -------------------------------------------------------------------------
+        // 3. Anonymous Toggle Logic (Section 6)
+        // -------------------------------------------------------------------------
+        let isAnonymous = true;
+
+        function toggleAnonymous() {
+            isAnonymous = !isAnonymous;
+            const knob = document.getElementById('anonKnob');
+            const label = document.getElementById('anonLabel');
+            const identityFields = document.getElementById('identityFields');
+            const toggleBtn = document.getElementById('toggleAnonBtn');
+
+            if (isAnonymous) {
+                knob.classList.add('translate-x-5');
+                knob.classList.remove('translate-x-0.5');
+                label.innerText = 'Mode Anonim';
+                label.className = 'text-xs font-semibold text-brand-yellow';
+                toggleBtn.className = 'w-10 h-5 bg-brand-yellow rounded-full relative transition-colors focus:outline-none p-0.5';
+                identityFields.classList.add('hidden');
+            } else {
+                knob.classList.remove('translate-x-5');
+                knob.classList.add('translate-x-0.5');
+                label.innerText = 'Mode Teridentifikasi';
+                label.className = 'text-xs font-semibold text-white';
+                toggleBtn.className = 'w-10 h-5 bg-white/20 rounded-full relative transition-colors focus:outline-none p-0.5';
+                identityFields.classList.remove('hidden');
+            }
+        }
+
+        // -------------------------------------------------------------------------
+        // 4. Handle Aspiration Submit
+        // -------------------------------------------------------------------------
+        function handleAspirationSubmit(e) {
+            e.preventDefault();
+            const randomTicket = 'ASP-2026-' + Math.floor(100 + Math.random() * 900);
+
+            document.getElementById('generatedTicketId').innerText = randomTicket;
+            document.getElementById('submitSuccessBox').classList.remove('hidden');
+
+            // Update tracker preview immediately
+            document.getElementById('trackInput').value = randomTicket;
+            document.getElementById('trackedIdDisplay').innerText = randomTicket;
+            document.getElementById('trackedStatusBadge').innerText = 'Baru Diterima';
+
+            // Reset form text
+            document.getElementById('aspirationTitle').value = '';
+            document.getElementById('aspirationBody').value = '';
+
+            lucide.createIcons();
+        }
+
+        // -------------------------------------------------------------------------
+        // 5. Track Aspiration Logic
+        // -------------------------------------------------------------------------
+        function trackAspiration() {
+            const code = document.getElementById('trackInput').value.trim() || 'ASP-2026-089';
+            document.getElementById('trackedIdDisplay').innerText = code.toUpperCase();
+
+            const badge = document.getElementById('trackedStatusBadge');
+            badge.innerText = 'Sedang Ditelaah Komisi';
+            badge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-brand-yellow/20 text-brand-yellow animate-pulse';
+
+            setTimeout(() => {
+                badge.classList.remove('animate-pulse');
+            }, 1200);
+        }
+
+        // -------------------------------------------------------------------------
+        // 6. Documents Filter & Search (Section 7)
+        // -------------------------------------------------------------------------
+        function filterDocCategory(category) {
+            document.querySelectorAll('.doc-filter').forEach(btn => {
+                btn.classList.remove('bg-brand-yellow', 'text-brand-charcoal', 'active');
+                btn.classList.add('bg-white/5', 'text-brand-gray');
+            });
+            event.target.classList.add('bg-brand-yellow', 'text-brand-charcoal', 'active');
+            event.target.classList.remove('bg-white/5', 'text-brand-gray');
+
+            const items = document.querySelectorAll('.doc-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        function filterDocs() {
+            const query = document.getElementById('docSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.doc-item');
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        function downloadMockDoc(title) {
+            openInfoModal('Unduh Dokumen Resmi', `File PDF "${title}" telah diverifikasi secara digital oleh Biro Kesekretariatan BEM Arunika. Tautan pengunduhan langsung siap digunakan.`);
+        }
+
+        function readArticle(title) {
+            openInfoModal('Warta & Kajian BEM', `Anda sedang membuka artikel kajian: "${title}". Versi lengkap memuat 12 data grafik interaktif dan catatan rekomendasi kebijakan kampus.`);
+        }
+
+        // -------------------------------------------------------------------------
+        // 7. Modals Open/Close Helper
+        // -------------------------------------------------------------------------
+        function openAspirasiModal() {
+            document.getElementById('aspirasiModal').classList.remove('hidden');
+        }
+
+        function closeAspirasiModal() {
+            document.getElementById('aspirasiModal').classList.add('hidden');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeAspirasiModal();
+            openInfoModal('Aspirasi Terkirim', 'Terima kasih telah menyuarakan pendapatmu! Tiket pelacakan telah diteruskan ke notifikasi web.');
+        }
+
+        function openInfoModal(title, body) {
+            document.getElementById('infoModalTitle').innerText = title;
+            document.getElementById('infoModalBody').innerText = body;
+            document.getElementById('infoModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.add('hidden');
+        }
+
+        // Close modals on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAspirasiModal();
+                closeInfoModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

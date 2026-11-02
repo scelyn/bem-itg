@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-red: #FF1833;
+  --brand-white: #FDFDFF;
+  --brand-yellow: #FFBC00;
+  --brand-blue: #003ECD;
+  --brand-navy: #002A62;
+
+  --background: #FDFDFF;
+  --foreground: #002A62;
+
+  --primary: #003ECD;
+  --primary-foreground: #FDFDFF;
+
+  --accent: #FFBC00;
+  --destructive: #FF1833;
+
+  --card: #FFFFFF;
+  --border: #D6DCE8;
+}
+
+/* Custom Scrollbar with Brand Visual Identity */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #001E47;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003ECD;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFBC00;
+}
+
+/* Glassmorphism Classes (Royal Blue & Persian Blue Identity) */
+.glass-nav {
+  background: rgba(0, 42, 98, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(253, 253, 255, 0.16);
+}
+
+.glass-card-dark {
+  background: rgba(0, 42, 98, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(253, 253, 255, 0.12);
+}
+
+.glass-card-light {
+  background: rgba(253, 253, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 62, 205, 0.12);
+}
+
+/* Background Ambient Gradients */
+.hero-mesh {
+  background-color: #002A62;
+  background-image:
+    radial-gradient(at 15% 15%, rgba(0, 62, 205, 0.90) 0px, transparent 55%),
+    radial-gradient(at 85% 20%, rgba(255, 188, 0, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, rgba(255, 24, 51, 0.12) 0px, transparent 65%);
+}
+
+.clay-badge {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.clay-badge:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Continuous Horizontal Infinite Marquee (Hardware Accelerated GPU) */
+@keyframes marquee-continuous {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-continuous {
+  display: flex;
+  width: max-content;
+  animation: marquee-continuous 190s linear infinite;
+  will-change: transform;
+}
+
+.marquee-paused {
+  animation-play-state: paused !important;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-continuous {
+    animation: none !important;
+  }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
